@@ -1,0 +1,47 @@
+﻿@model Assignment01_ASP.Models.InterestCalculator
+@{
+    ViewData["Title"] = "CompoundInterest";
+}
+
+<h2>Compound Interest Calculator</h2>
+<hr />
+<div class="calculatorInputGroup">Where: A = P(1 + r/n)<sup>nt</sup> 
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CompoundInterest">
+            <div class="form-group">
+                <label asp-for="Principal" class="control-label"></label>
+                <input asp-for="Principal" class="form-control" type="text" placeholder="Principal amount $" required="" />
+                <span asp-validation-for="Principal" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <input asp-for="Rate" class="form-control" type="text" placeholder="Anual Rate in percent %" required="" />
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Compound" class="control-label"></label>
+                <input asp-for="Compound" class="form-control" type="text" placeholder="Compounds per year" required="" />
+                <span asp-validation-for="Compound" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Years" class="control-label"></label>
+                <input asp-for="Years" class="form-control" type="text" title="positive real number" placeholder="Number of years" required="" />
+                <span asp-validation-for="Years" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Calculate" class="btn btn-default" />
+            </div>
+        </form>
+        <div class="text-danger">
+            <h4>Result:</h4>
+            <h3>@ViewData["Result"]</h3>
+        </div>
+    </div>
+        <br />
+</div>

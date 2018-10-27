@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Assignment01_ASP.Data
+
+@model Assignment01_ASP.Models.AppUser
+
+@inject RoleManager<AppRole> roleManager
+@inject UserManager<AppUser> userManager
+
+@{
+    ViewData["Title"] = "List of users";
+
+}
+
+<div>
+    <h4>Details:</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Username
+                </th>
+                <th>
+                    Password
+                </th>
+                <th>
+                    First name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    Mobile number
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Street
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    Province
+                </th>
+                <th>
+                    Postal code
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Admin
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Province)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Country)
+                </td>
+                <td>
+                    @Html.CheckBox("Is admin", (userManager.IsInRoleAsync(Model, "Admin")))
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="UserList">Back to List</a>
+    </div>
+</div>
